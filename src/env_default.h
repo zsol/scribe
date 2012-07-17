@@ -20,6 +20,8 @@
 #ifndef SCRIBE_ENV
 #define SCRIBE_ENV
 
+#include <set>
+
 #include "thrift/protocol/TBinaryProtocol.h"
 #include "thrift/server/TNonblockingServer.h"
 #include "thrift/concurrency/ThreadManager.h"
@@ -39,7 +41,27 @@
 #include "src/gen-cpp/scribe.h"
 #include "src/gen-cpp/BucketStoreMapping.h"
 
-typedef boost::shared_ptr<scribe::thrift::LogEntry> logentry_ptr_t;
+class Store;
+
+template <typename LogEntry>
+struct Wrapper : public LogEntry
+{
+public:
+  Wrapper(const LogEntry& entry) : LogEntry(entry) {}
+  
+  void setFailed(Store* store) { failedStores.insert(store); }
+  void setPassed(Store* store) 
+  { 
+    if (std::set<Store>::iterator it = failedStores.find(store))
+      failedStores.erase(it); 
+  }
+  bool hasFailed(Store* store) const { return failedStores.find(store) != failedStores.end(); }
+  
+private:
+  std::set<Store*> failedStores;
+};
+
+typedef boost::shared_ptr<Wrapper<scribe::thrift::LogEntry> > logentry_ptr_t;
 typedef std::vector<logentry_ptr_t> logentry_vector_t;
 typedef std::vector<std::pair<std::string, int> > server_vector_t;
 
