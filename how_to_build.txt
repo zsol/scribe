@@ -109,7 +109,7 @@
   109  ls src/dist/
   110  find src/dist
   111  rm -rf src/dist/
-  112  make DESTDIR=$(pwd)/dist install && cp examples/scribe_c* dist/usr/bin/ && mv dist/usr/lib/python2.7/{site,dist}-packages
+  112  make DESTDIR=$(pwd)/dist install && cp examples/scribe_* dist/usr/bin/ && mv dist/usr/lib/python2.7/{site,dist}-packages
   113  cd dist/
   114  ls
   115  find .
