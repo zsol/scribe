@@ -1,3 +1,5 @@
+    see: http://ycavatars.blogspot.hu/2012/05/build-scribe-on-ubuntu-1204.html
+    sudo apt-get install make flex bison libtool libevent-dev automake pkg-config libssl-dev libboost-all-dev libbz2-dev build-essential g++ python-dev git
     1  sudo locale-gen en_US
     2  sudo -i
     3  ls -l
@@ -118,6 +120,8 @@
   118  s
   119  ls
   120  ldd usr/bin/scribed 
+  sudo apt-get install rubygems
+  gem install fpm
   121  fpm -s dir -t deb -n scribe -v 2.2~20130513-0ubuntu1~prezi1 -m 'zsol@prezi.com' -e --description "Scribe logserver" -d libboost-system1.46.1 -d libboost-filesystem1.46.1 -d libevent-2.0-5
   122  fpm -s dir -t deb -n scribe -v 2.2~20130513-0ubuntu1~prezi1 -m 'zsol@prezi.com' -e --description "Scribe logserver" -d libboost-system1.46.1 -d libboost-filesystem1.46.1 -d libevent-2.0-5 usr
   123  ls
