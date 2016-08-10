@@ -6,11 +6,6 @@ RUN apt-key add /tmp/deb-repo-keys && rm /tmp/deb-repo-keys
 
 # Add public deb repos, install S3 apt transport
 ADD public-deb-sources.list /etc/apt/sources.list.d/public-deb-sources.list
-RUN apt-get update \
- && apt-get install apt-transport-s3 -y
-
-# Add private deb repo
-ADD prezi-s3-private-source.list /etc/apt/sources.list.d/prezi-s3-private-source.list
 
 # Install build dependencies
 RUN apt-get update \
