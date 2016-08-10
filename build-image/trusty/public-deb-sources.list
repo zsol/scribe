@@ -1,0 +1,2 @@
+deb http://s3.amazonaws.com/package-repository-public prezi-trusty main
+deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty main
