@@ -10,7 +10,7 @@ RUN apt-get update \
  && apt-get install apt-transport-s3 -y
 
 # Add private deb repo
-ADD prezi-s3-private-source.list /etc/apt/prezi-s3-private-source.list
+ADD prezi-s3-private-source.list /etc/apt/sources.list.d/prezi-s3-private-source.list
 
 # Install build dependencies
 RUN apt-get update \
