@@ -34,7 +34,7 @@ all:
 #
 THRIFT = $(thrift_home)/bin/thrift
 THRIFT_INCLUDES = -I $(fb303_home)/share/
-THRIFT_OPTS = $(THRIFT_INCLUDES) --gen cpp:pure_enums --gen py --gen php --gen java --gen erl
+THRIFT_OPTS = $(THRIFT_INCLUDES) --gen cpp:pure_enums --gen py --gen php --gen java
 
 # User defined conditionals and conditonal statements set up in configure.ac.
 # FACEBOOK set in configure.ac
