@@ -1,0 +1,128 @@
+    see: http://ycavatars.blogspot.hu/2012/05/build-scribe-on-ubuntu-1204.html
+    sudo apt-get install make flex bison libtool libevent-dev automake pkg-config libssl-dev libboost-all-dev libbz2-dev build-essential g++ python-dev git
+    1  sudo locale-gen en_US
+    2  sudo -i
+    3  ls -l
+    4  sudo -i
+    5  ls
+    6  git clone git://github.com/facebook/scribe.git
+    7  cd scribe
+    8  ./bootstrap.sh 
+    9  sudo -i
+   10  ./bootstrap.sh 
+   11  ./configure 
+   12  make
+   13  sudo -i
+   14  ./configure --help
+   15  cd scribe/
+   16  ./configure --help
+   17  ./configure --with-thriftpath=/usr/bin/thrift
+   18  make
+   19  ./configure --with-thriftpath=/usr/
+   20  make
+   21  ls /usr/include/thrift/
+   22  ls /usr/include/thrift/fb303/
+   23  cd ..
+   24  rm -rf scribe/
+   25  git clone git://github.com/prezi/scribe
+   26  cd scribe/
+   27  ./bootstrap.sh 
+   28  ./configure --with-thriftpath=/usr/
+   29  make
+   30  ./configure --with-thriftpath=/usr/ --help
+   31  ./configure --with-thriftpath=/usr/ --with-fb303path=/usr/include/thrift/fb303
+   32  make
+   33  ls /usr/include/thrift/fb303/
+   34  ls /usr/share/
+   35  ls /usr/share/fb303/
+   36  ls /usr/share/fb303/if/
+   37  ./configure --with-thriftpath=/usr/ --with-fb303path=/usr
+   38  make
+   39  ls /usr/include/thrift/
+   40  ls /usr/include/thrift/processor/
+   41  find /usr/include -iname tdispatchprocessor.h
+   42  dpkg -L thrift-fb303
+   43  dpkg -S /usr/bin/thrift
+   44  dpkg -l thrift-compiler
+   45  sudo -i
+   46  make
+   47  ./configure --with-thriftpath=/usr/ --with-fb303path=/usr
+   48  make
+   49  apt-cache show libthrift-cil
+   50  make
+   51  ./configure --with-thriftpath=/usr/ --with-fb303path=/usr CPPFLAGS="-DHAVE_INTTYPES_H -DHAVE_NETINET_IN_H"
+   52  make
+   53  ls
+   54  cd src/
+   55  ls
+   56  cd gen-cpp/
+   57  ls
+   58  less scribe.h
+   59  vim scribe.h
+   60  vim /usr/include/thrift/fb303/FacebookService.h 
+   61  vim /usr/include/thrift/TDispatchProcessor.h 
+   62  ls
+   63  cd ..
+   64  ls
+   65  cd ..
+   66  ls
+   67  vim if/scribe.thrift 
+   68  make
+   69  ./configure --with-thriftpath=/usr/ --with-fb303path=/usr CPPFLAGS="-DHAVE_INTTYPES_H -DHAVE_NETINET_IN_H -DBOOST_FILESYSTEM_VERSION=2"
+   70  make clean
+   71  make
+   72  sudo -i
+   73  make
+   74  ./configure --with-thriftpath=/usr/ --with-fb303path=/usr CPPFLAGS="-DHAVE_INTTYPES_H -DHAVE_NETINET_IN_H -DBOOST_FILESYSTEM_VERSION=2"
+   75  make
+   76  sudo -i
+   77  make
+   78  ./configure --with-thriftpath=/usr/ --with-fb303path=/usr CPPFLAGS="-DHAVE_INTTYPES_H -DHAVE_NETINET_IN_H -DBOOST_FILESYSTEM_VERSION=2"
+   79  make
+   80  cd src
+   81  g++  -Wall -O3 -L/usr/lib  -o scribed store.o store_queue.o conf.o file.o conn_pool.o scribe_server.o network_dynamic_config.o dynamic_bucket_updater.o  env_default.o  -L/usr/local/lib -L/usr/local/lib -L/usr/local/lib -lfb303 -lthrift -lthriftnb -levent -lpthread  libscribe.a libdynamicbucketupdater.a -lboost_system-mt -lboost_filesystem-mt
+   82  fpm
+   83  sudo -i
+   84  fpm --help
+   85  make
+   86  less Makefile
+   87  make DESTDIR=dist install
+   88  ls
+   89  cd dist
+   90  ls
+   91  cd ..
+   92  rm -rf dist
+   93  cd ..
+   94  make DESTDIR=dist install
+   95  ls
+   96  ls dis
+   97  ls dist
+   98  ls src
+   99  cd src/
+  100  cd dist/
+  101  ls
+  102  find .
+  103  ldd ./usr/local/bin/scribed 
+  104  cd ../
+  105  cd ..
+  106  ./configure --prefix=/usr --with-thriftpath=/usr/ --with-fb303path=/usr CPPFLAGS="-DHAVE_INTTYPES_H -DHAVE_NETINET_IN_H -DBOOST_FILESYSTEM_VERSION=2"
+  107  make
+  108  make DESTDIR=dist install
+  109  ls src/dist/
+  110  find src/dist
+  111  rm -rf src/dist/
+  112  make DESTDIR=$(pwd)/dist install && cp examples/scribe_* dist/usr/bin/ && mv dist/usr/lib/python2.7/{site,dist}-packages
+  113  cd dist/
+  114  ls
+  115  find .
+  116  apt-cache search python2
+  117  apt-cache search python2.6
+  118  s
+  119  ls
+  120  ldd usr/bin/scribed 
+  sudo apt-get install rubygems
+  gem install fpm
+  121  fpm -s dir -t deb -n scribe -v 2.2~20130513-0ubuntu1~prezi1 -m 'zsol@prezi.com' -e --description "Scribe logserver" -d libboost-system1.46.1 -d libboost-filesystem1.46.1 -d libevent-2.0-5
+  122  fpm -s dir -t deb -n scribe -v 2.2~20130513-0ubuntu1~prezi1 -m 'zsol@prezi.com' -e --description "Scribe logserver" -d libboost-system1.46.1 -d libboost-filesystem1.46.1 -d libevent-2.0-5 usr
+  123  ls
+  124  history > ../../history
